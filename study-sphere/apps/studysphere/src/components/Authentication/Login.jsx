@@ -22,18 +22,16 @@ const Login = () => {
     }
   }
   return (
-    <main className="flex min-h-screen">
+    <main className="flex min-h-screen bg-background-light text-primary-light">
         <section className="flex items-center justify-center w-full p-8 md:w-1/2">  
-            <div className="w-full max-w-md">
-                <h1 className="mb-6 font-extrabold text-3x1">Welcome Back!</h1>
+            <div className="flex flex-col w-full max-w-md border-2 border-red-400">
+                <p className="mb-6 font-sans md:text-5xl">Welcome Back!</p>
                 <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
-                    <input type="email" id="email" name="email" required />
+                    <input type="email" id="email" name="email" placeholder="Email" />
                 </div>
                 <div>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" required />
+                    <input type="password" id="password" name="password" placeholder="Password" />
                 </div>
                 <p>Forgot Password?</p>
                 <button type="submit">Login</button>
