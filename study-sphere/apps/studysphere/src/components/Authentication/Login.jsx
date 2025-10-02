@@ -12,7 +12,7 @@ const Login = () => {
 
     // TODO: call Firebase auth here (signInWithEmailAndPassword)
     if (!email || !password) {
-      setError("Please enter both email and password");
+      setError("Please fill both fields");
       return;
     }
     try {

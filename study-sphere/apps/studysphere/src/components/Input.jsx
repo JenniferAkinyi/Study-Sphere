@@ -1,9 +1,9 @@
 export default function Input({
   id,
-  label,
   type = "text",
   value,
   onChange,
+  placeholder,
   ...props
 }) {
   return (
@@ -13,7 +13,8 @@ export default function Input({
         type={type}
         value={value}
         onChange={onChange}
-        className="block w-64 mt-1 border-gray-400 rounded-lg focus:ring-indigo-500"
+        placeholder={placeholder}
+        className="block w-64 px-3 py-2 mt-1 border border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-500"
         {...props}
       />
     </div>

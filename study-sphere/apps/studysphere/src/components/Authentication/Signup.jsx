@@ -1,36 +1,96 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import pageImage from "../../assets/authentication-bg.png";
+import Input from "../../components/Input";
 
 const Signup = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    // TODO: Firebase sign up configuration
+    if(!email ||!name || !password || !confirmPassword){
+      setError("Please fill all fields")
+      return
+    }
+    try {
+      
+    } catch (error) {
+      setError(error.message || "Signup Failed")
+    }
+  };
+
   return (
-    <main>
-      <div>
-          <h1>Signup Page</h1>
-          <form>
-              <div>
-              <label htmlFor="username">Username:</label>
-              <input type="text" id="username" name="username" required />
-              </div>
-              <div>
-              <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" required />
-              </div>
-              <div>
-              <label htmlFor="password">Password:</label>
-              <input type="password" id="password" name="password" required />
-              </div>
-              <button type="submit">Sign Up</button>
+    <main className="flex min-h-screen bg-background-light text-primary-light">
+      <section className="flex items-center justify-center w-full p-8 md:w-1/2">
+        <div className="flex flex-col items-center w-full max-w-md">
+          <p className="mb-6 font-sans md:text-5xl">Create Account</p>
+          <form onSubmit={handleSubmit} noValidate className="space-y-4">
+            <div>
+              <Input 
+                type="text" 
+                id="name" 
+                name="name" 
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                aria-describedby={error ? "form-error" : undefined}
+              />
+            </div>
+            <div>
+              <Input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                aria-describedby={error ? "form-error" : undefined}
+              />
+            </div>
+            <div>
+              <Input 
+                type="password" 
+                id="password" 
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                aria-describedby={error ? "form-error" : undefined}
+              />
+            </div>
+            <div>
+              <Input 
+                type="password" 
+                id="confirmpassword" 
+                name="confirmpassword"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                aria-describedby={error ? "form-error" : undefined}
+              />
+            </div>
+            {error &&(
+              <p id="form-error" className="text-sm text-red-600">{error}</p>
+            )}
+            <button 
+              type="submit"
+              className="w-full py-2 font-medium text-white transition bg-indigo-600 rounded-lg hover:bg-indigo-700"
+            >
+              Sign Up
+            </button>
           </form>
-      </div>
-      <div className="page-image">
-        
-      </div>
+        </div>
+      </section>
+      <aside>
+        <img src={pageImage} alt="signup-image" className="object-cover w-full h-full"/>
+      </aside>
     </main>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
