@@ -2,6 +2,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { app } from "../firebase";
 
 const auth = getAuth(app);
+
 // signing a new user to studysphere
 export async function register(email, password) {
   try {

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {login }from "../../../../backend/services/auth"
 import pageImage from "../../assets/authentication-bg.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +19,8 @@ const Login = () => {
       return;
     }
     try {
+      const user = await login(email, password)
+      navigate("/home")
     } catch (error) {
       setError(error.message || "Login Failed");
     }

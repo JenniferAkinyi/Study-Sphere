@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import pageImage from "../../assets/authentication-bg.png";
 import Input from "../../components/Input";
+import { register } from "../../../../backend/services/auth"
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +10,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,8 +20,13 @@ const Signup = () => {
       setError("Please fill all fields")
       return
     }
+    if(password !== confirmPassword){
+      setError("Passwords do not match")
+      return
+    }
     try {
-      
+      const user = await register(email, password)
+      navigate("/login")
     } catch (error) {
       setError(error.message || "Signup Failed")
     }
