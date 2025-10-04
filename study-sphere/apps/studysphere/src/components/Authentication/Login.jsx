@@ -68,7 +68,7 @@ const Login = () => {
             </button>
           </form>
           <p className="md:text-sm"> 
-            Not a member?<span className="font-semibold"> Sign Up</span>
+            Not a member?{" "}<button onClick={() => navigate("/signup")} className="font-semibold hover:underline">Sign Up</button>
           </p>
         </div>
       </section>
