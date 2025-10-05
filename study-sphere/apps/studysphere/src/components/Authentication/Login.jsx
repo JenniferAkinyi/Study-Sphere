@@ -20,7 +20,7 @@ const Login = () => {
     }
     try {
       const user = await login(email, password)
-      navigate("/home")
+      navigate("/dashboard")
     } catch (error) {
       setError(error.message || "Login Failed");
     }
