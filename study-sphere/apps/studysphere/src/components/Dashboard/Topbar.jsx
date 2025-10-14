@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { MdOutlineMenu, MdNotificationsNone } from "react-icons/md";
 import Logo from "../../assets/logo.png";
+import Avatar from "../Authentication/Avatar";
 import { SidebarContext } from "../../context/SidebarContext";
+import { useUser } from "../../context/userContext"
 
 const Topbar = () => {
   const { toggleSidebar } = useContext(SidebarContext);
+  const { userData } = useUser()
   return (
     <header className="flex items-center justify-between px-6 py-3 bg-white shadow-sm">
       <div className="flex items-center gap-3">
@@ -18,11 +21,12 @@ const Topbar = () => {
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
         </button>
 
-        <img
-          src="https://via.placeholder.com/32"
-          alt="Profile"
-          className="w-8 h-8 border border-gray-300 rounded-full cursor-pointer"
+        <Avatar 
+          username={userData?.username || "Guest User"}
+          profileImage={userData?.profileImage}
+          size={32}
         />
+        {/* TODO: Add a dropdown menu that opens to settings */}
       </div>
     </header>
   );

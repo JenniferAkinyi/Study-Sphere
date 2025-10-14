@@ -1,0 +1,48 @@
+// src/context/UserContext.js
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { app } from "../../../backend/firebase";
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const UserContext = createContext();
+
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+
+        // fetch profile data from Firestore
+        const docRef = doc(db, "users", firebaseUser.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUserData(docSnap.data());
+        } else {
+          setUserData(null);
+        }
+      } else {
+        setUser(null);
+        setUserData(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ user, userData, loading }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+// Custom hook for convenience
+export const useUser = () => useContext(UserContext);
