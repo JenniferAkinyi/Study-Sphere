@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import profilePic from '../../assets/profile.jpg'
 import { MdClose, MdImage, MdLink } from 'react-icons/md'
+import Avatar  from "../Authentication/Avatar"
+import { useUser } from '../../context/userContext'
 
 const PostModal = ({onClose}) => {
     const [postText, setPostText] = useState("")
+    const { userData } = useUser()
     
     const handlePost = () =>{
         onClose()
@@ -18,8 +20,12 @@ const PostModal = ({onClose}) => {
                 <MdClose size={24}/>
             </button>
             <div className='flex items-center gap-3 mb-4'>
-                <img src={profilePic} alt="profile" className='object-cover w-10 h-10 rounded-full'/>
-                <h3 className='font-semibold text-gray-800'>Jane Doe</h3>
+                <Avatar 
+                    username = {userData?.username || "Guest user"}
+                    profileImage={userData?.profileImage}
+                    size={32}
+                />
+                <h3 className='font-semibold text-gray-800'>{userData?.username || "Guest user"}</h3>
             </div>
             <textarea 
                 className='w-full min-h-[120px] resize-none border-none focus:outline-none text-gray-700'
