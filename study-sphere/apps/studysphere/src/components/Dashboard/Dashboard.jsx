@@ -3,6 +3,7 @@ import Topbar from "./Topbar";
 import Sidebar from "../Sidebar/Sidebar";
 import PostComposer from "../Posts/PostComposer";
 import PostCard from "../Posts/Postfeed/PostCard";
+import PostFeed from "../Posts/Postfeed/PostFeed";
 
 const Dashboard = () => {
   return (
@@ -11,7 +12,8 @@ const Dashboard = () => {
       <Sidebar />
       <main className="p-6">
         <PostComposer/>
-        <PostCard/>
+        {/* <PostCard/> */}
+        <PostFeed />
       </main>
     </div>
   );

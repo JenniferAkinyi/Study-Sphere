@@ -18,7 +18,6 @@ export const UserProvider = ({ children }) => {
       if (firebaseUser) {
         setUser(firebaseUser);
 
-        // fetch profile data from Firestore
         const docRef = doc(db, "users", firebaseUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {

@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 // import { getDatabase } from "firebase/database";   
 // for user presence
-// import { getFirestore } from "firebase/firestore"; // for real-time chat
+import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,6 +22,6 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 
 // Export Firebase services
-// export const db = getDatabase(app);
-// export const rtdb = getFirestore(app);
+// export const rtdb = getDatabase(app);
+export const db = getFirestore(app);
 export const auth = getAuth(app); 
