@@ -20,7 +20,6 @@ const PostModal = ({ onClose }) => {
         setError("Post cannot be empty")
         return
     } 
-        
     setLoading(true);
 
     try {
@@ -34,12 +33,11 @@ const PostModal = ({ onClose }) => {
         content: postText,
         username: userData?.username || "Guest User",
         userImage: userData?.profileImage || "",
-        likes: 0,
+        likes: [],
         shares: 0,
-        comment: [],
+        comments: [],
         image: imageUrl || "",
         link: postLink || "",
-        timeAgo: new Date().toISOString(),
         createdAt: serverTimestamp(),
       });
       setPostText("");
