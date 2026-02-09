@@ -21,7 +21,10 @@ export const UserProvider = ({ children }) => {
         const docRef = doc(db, "users", firebaseUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setUserData(docSnap.data());
+          setUserData({
+            uid: firebaseUser.uid,
+            ...docSnap.data()
+          });
         } else {
           setUserData(null);
         }

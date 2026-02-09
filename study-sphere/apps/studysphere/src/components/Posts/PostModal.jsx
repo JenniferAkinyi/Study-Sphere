@@ -30,12 +30,12 @@ const PostModal = ({ onClose }) => {
         imageUrl = await getDownloadURL(imageRef);
       }
       await addDoc(collection(db, "posts"), {
+        uid: userData.uid,
         content: postText,
         username: userData?.username || "Guest User",
-        userImage: userData?.profileImage || "",
+        profileImage: userData?.profileImage || "",
         likes: [],
         shares: 0,
-        comments: [],
         image: imageUrl || "",
         link: postLink || "",
         createdAt: serverTimestamp(),
