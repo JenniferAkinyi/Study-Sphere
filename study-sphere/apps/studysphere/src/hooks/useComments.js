@@ -17,10 +17,18 @@ const useComments = (postId) => {
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const list = snapshot.docs.map((doc) => ({
         id: doc.id,
+        likes: [],
         ...doc.data(),
       }));
+      const parents = list.filter((c) => !c.parentId);
+      const replies = list.filter((c) => c.parentId);
 
-      setComments(list);
+      const threaded = parents.map((p) => ({
+        ...p,
+        replies: replies.filter((r) => r.parentId === p.id),
+      }));
+
+      setComments(threaded);
       setLoading(false);
     });
 
