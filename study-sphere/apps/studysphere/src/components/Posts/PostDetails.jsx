@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import PostView from "./PostView";
 import CommentList from "../Comment/CommentList";
+import Sidebar from "../Sidebar/Sidebar";
+import Topbar from "../Dashboard/Topbar";
 
 const PostDetails = () => {
   const { id } = useParams();
