@@ -2,15 +2,17 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Topbar from "../components/Dashboard/Topbar";
 
-const AppLayout = ({ children }) => {
+const AppLayout = () => {
   return (
-    <div className="relative min-h-screen">
-      <Topbar />
+    <div className="flex bg-background-light">
       <Sidebar />
 
-      <main className="max-w-2xl p-6 mx-auto mt-6">
-        <Outlet />
-      </main>
+      <div className="flex-1 ml-64">
+        <Topbar />
+        <main className="min-h-screen p-5 pt-14 bg-gray-50">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };

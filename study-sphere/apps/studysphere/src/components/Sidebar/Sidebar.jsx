@@ -25,12 +25,15 @@ const Sidebar = () => {
   return (
     <aside
       ref={navbarRef}
-      className={`fixed top-0 left-0 z-40 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
-        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      }`}
+      className={`fixed top-0 left-0 z-40 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
+        -translate-x-full md:translate-x-0`}
     >
       <div className="flex items-center p-4 border-b border-gray-200 justify-evenly">
-        <MdOutlineMenu size={24} className="text-gray-700 cursor-pointer" onClick={closeSidebar}/>
+        <MdOutlineMenu
+          size={24}
+          className="text-gray-700 cursor-pointer md:hidden"
+          onClick={closeSidebar}
+        />
         <p className="text-2xl font-semibold text-primary-light">Study Sphere</p>
       </div>
       <div className="p-4">
@@ -50,7 +53,7 @@ const Sidebar = () => {
               <span>Dashboard</span>
             </NavLink>
           </li>
-                    <li>
+          <li>
             <NavLink
               to="/studygroup"
               className={({ isActive }) =>

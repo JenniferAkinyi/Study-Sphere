@@ -14,12 +14,15 @@ function App() {
       <Router>
         <SidebarProvider>
           <Routes>
+            {/* Public */}
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/dashboard" element={<Dashboard/>} />
+
+            {/* Protected / App layout */}
             <Route element={<AppLayout />}>
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/post/:id" element={<PostDetails />} />
-              <Route path="/studygroup" element={<StudyScreen/>}/>
+              <Route path="/studygroup" element={<StudyScreen />} />
             </Route>
           </Routes>
         </SidebarProvider>
