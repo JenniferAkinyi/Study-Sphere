@@ -8,16 +8,21 @@ import GoalCard from "./Components/GoalCard"
 
 const Dashboard = () => {
   return (
-    <div className="grid grid-cols-1 gap-8 mt-10 h-200 lg:grid-cols-3">
-      <div className="space-y-8 lg:col-span-2">
+    <div className="px-6 mt-10 space-y-8">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[6fr_4fr]">
         <WelcomeHeader/>
-        <JoinedGroups />
-        <RecentActivity />
-      </div>
-      <div className="space-y-6">
         <GoalCard />
-        <UpcomingSessions />
-        <QuickBoostCard />
+      </div>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[7fr_3fr]">
+        <div className="space-y-8">
+          <JoinedGroups />
+          <RecentActivity />
+        </div>
+        <div className="space-y-8">
+          <UpcomingSessions />
+          <QuickBoostCard />
+        </div>
+        
       </div>
     </div>
   );

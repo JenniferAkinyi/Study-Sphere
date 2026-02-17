@@ -1,5 +1,10 @@
 import React, { useContext, useRef, useEffect } from "react";
-import { MdOutlineMenu, MdOutlineGridView, MdOutlinePeople } from "react-icons/md";
+import {
+  MdOutlineMenu,
+  MdOutlineGridView,
+  MdOutlinePeople,
+} from "react-icons/md";
+import { LuGoal } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
 import { SidebarContext } from "../../context/SidebarContext";
 
@@ -34,7 +39,9 @@ const Sidebar = () => {
           className="text-gray-700 cursor-pointer md:hidden"
           onClick={closeSidebar}
         />
-        <p className="text-2xl font-semibold text-primary-light">Study Sphere</p>
+        <p className="text-2xl font-semibold text-primary-light">
+          Study Sphere
+        </p>
       </div>
       <div className="p-4">
         <ul className="space-y-2">
@@ -66,6 +73,21 @@ const Sidebar = () => {
             >
               <MdOutlinePeople size={18} />
               <span>Study Group</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/studygoals"
+              className={({ isActive }) =>
+                `flex items-center gap-3 p-2 rounded-lg transition-colors duration-200 ${
+                  isActive
+                    ? "bg-indigo-100 text-indigo-600"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`
+              }
+            >
+              <LuGoal size={18} />
+              <span>Study Goals</span>
             </NavLink>
           </li>
         </ul>

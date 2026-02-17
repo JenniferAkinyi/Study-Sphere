@@ -6,6 +6,7 @@ import Login from "./components/Authentication/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PostDetails from "./components/Posts/PostDetails";
 import StudyScreen from "./components/Study Group/StudyScreen";
+import StudyGoalsPage from "./components/StudyGoal/StudyGoalsPage";
 import AppLayout from "./layout/AppLayout";
 
 function App() {
@@ -14,15 +15,14 @@ function App() {
       <Router>
         <SidebarProvider>
           <Routes>
-            {/* Public */}
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
 
-            {/* Protected / App layout */}
             <Route element={<AppLayout />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/post/:id" element={<PostDetails />} />
               <Route path="/studygroup" element={<StudyScreen />} />
+              <Route path="/studygoals" element={<StudyGoalsPage />} />
             </Route>
           </Routes>
         </SidebarProvider>
